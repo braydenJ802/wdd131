@@ -1,0 +1,69 @@
+
+body {
+    /*Font*/
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+
+    /*Page Margin*/
+    margin: 50px;
+
+    background-color:  white;
+
+    line-height: 1.3;
+}
+
+.content {
+    max-width: 600px;
+    margin: 60px auto; /* Center it horizontally */
+    border: solid rgb(179, 179, 179) 1px;
+    padding: 50px;
+}
+
+
+/* Title */
+.title {
+    letter-spacing: 3px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.title h1 {
+    color: black;
+    font-weight: 550;
+    margin-bottom: 15px;
+}
+
+.title h2 {
+    color: #006EB6;
+    font-size: 18px;
+    font-weight: 550;
+    border-bottom: solid lightgray 1px;
+}
+
+
+/*Main*/
+p, ol {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mission {
+    margin-top: 50px;
+}
+
+.achieves-by-list li {
+    /* Added padding between list elements */
+    padding-top: 12px;
+    padding-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center; /*Put the image in the center*/
+}
+
+footer img {
+    max-width: 150px; /*Make the image smaller*/
+    margin-top: 30px;
+}
