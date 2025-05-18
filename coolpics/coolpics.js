@@ -27,13 +27,17 @@ function openModal(event) {
     const modalImage = document.querySelector("dialog img");
     
     // Find the image the user clicked
-    const parentImage = event.target.closest("img").src;
+    const clickedImage = event.target.closest("img");
+    const imageSrc = clickedImage.src;
+    const imageAlt = clickedImage.alt;
     
     // Get the full image by adding "-full.jpeg" onto the end of the image file name
-    const modalImageSrc = parentImage.split("-")[0] + "-full.jpeg";
+    const modalImageSrc = imageSrc.split("-")[0] + "-full.jpeg";
 
     // Set the modal image to this image source (file name)
     modalImage.setAttribute("src", modalImageSrc);
+    // And set it's alternate description as well!
+    modalImage.setAttribute("alt", imageAlt);
 
     // Attach listeners for closing here (since these elements now exist)
     // Close button event listener
