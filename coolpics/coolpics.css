@@ -25,6 +25,10 @@ header, #menu, footer {
     
 }
 
+.hide-list {
+    display: none;
+}
+
 .wrapper {
     max-width: 1300px;
     margin: 0 auto;
@@ -94,6 +98,41 @@ main {
     box-shadow: 2px 3px 4px 2px black;
 }
 
+/* Added through JavaScript*/
+dialog {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* translucent black */
+    margin: 1vh auto;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    border: none;
+    z-index: 10;
+}
+
+dialog img {
+    max-width: 90vw;  /* 90% of the viewport width */
+    max-height: 90vh; /* 80% of the viewport height */
+    object-fit: contain;
+    border: 5px solid white;
+    box-shadow: 0 0 10px black;
+    
+}
+
+/* Modal close button */ 
+.close-viewer {
+    position: absolute;
+    top: 2vh;   /* 2% of the viewport height from the top of the screen */
+    right: 2vw; /* 2% of the viewport width from the right side */
+    background-color: white;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold; 
+    cursor: pointer; /* hand cursor when hovering */
+    z-index: 20;
+}
 
 footer {
     padding: 1rem;
@@ -118,11 +157,6 @@ footer {
 
     #menu {
         margin-bottom: 15px;
-    }
-
-
-    nav ol {
-        display: none;
     }
 
 }
