@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #333333;
+    margin: 0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+}
+
+h1 {
+    font-family: "Lora", serif;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #2c5aa0;
+    margin: 0.5rem 0;
+}
+
+nav {
+    border-top: 2px solid #e9ecef;
+    border-bottom: 2px solid #e9ecef;
+    padding: 0.5rem 0;
+}
+
+/* Center it for mobile */
+nav ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    justify-items: center;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav ul a:link {
+    text-decoration: none;
+    color: #c2185b;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem;
+}
+
+nav ul a:hover {
+    color: #ad1457;
+}
+
+nav ul a:active {
+    color: #7c0e3a;
+}
+
+nav ul a:visited {
+    color: #c2185b;
+}
+
+/* Single column for mobile */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.books-grid {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 2rem;
+}
+
+.book {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #8298b9; /* For mobile - full width */
+    text-align: center;
+}
+
+.book:last-child {
+    border-bottom: none;
+}
+
+/* Center it for mobile */
+.book-details {
+    text-align: center;
+    border: none;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.date {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #2c5aa0;
+}
+
+.reading-age, .genre {
+    margin: 0.25rem 0;
+    color: #666;
+}
+
+.rating {
+    color: #ffa500;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.book-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-title {
+    color: #1e40af;
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+}
+
+.book-content img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.caption {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.caption a:link {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.caption a:hover {
+    color: #b91c1c;
+    text-decoration: underline;
+}
+
+.caption a:active {
+    color: #7e1010;
+}
+
+.caption a:visited {
+    color: #5f2929;
+}
+
+.filters {
+    border: 2px solid #e9ecef;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    height: fit-content;
+    border-radius: 8px;
+}
+
+.filters p {
+    color: #666;
+    text-align: center;
+    margin: 0;
+}
+
+footer {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-top: 2px solid #e9ecef;
+    margin-top: 3rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Media Query for Desktop */
+@media (min-width: 769px) {
+    /* Two-column layout for larger screens */
+    main {
+        grid-template-columns: 3fr 1fr;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+    }
+    
+    /* Side-by-side book layout */
+    .book {
+        grid-template-columns: 200px 1fr;
+        gap: 2rem;
+        text-align: left;
+        border: none;
+        position: relative;
+    }
+    
+    /* Create aligned border with pseudo-element */
+    .book::after {
+        content: "";           /* Creates an invisible element */
+        position: absolute;    /* Positions it precisely */
+        bottom: 0;             /* Sits at bottom of .book container */
+        left: 200px;           /* Starts where .book-content begins */
+        right: 0;              /* Extends to right edge */
+        height: 1px;           /* Makes it a thin line */
+        background-color: #e9ecef;
+    }
+    
+    /* Remove pseudo-element from last book */
+    .book:last-child::after {
+        display: none;
+    }
+
+    /* Right-aligned book details */
+    .book-details {
+        text-align: right;
+        padding-right: 1rem;
+        border-right: 2px solid #2c5aa0;
+        border-radius: 0;
+        padding: 0 1rem 0 0;
+        margin-bottom: 0;
+        background-color: transparent;
+    }
+    
+    /* Left-aligned book content */
+    .book-content {
+        align-items: flex-start;
+    }
+
+    .book-content img {
+        margin-left: 4rem; /* to match offset in mockup */
+    }
+
+    /* Right-aligned navigation */
+    nav ul {
+        justify-items: end;
+        padding: 0.5rem 2rem 0.5rem 0;
+        margin: 0;
+        margin-right: 2rem;
+        margin-left: auto;
+        max-width: 1200px;
+    }
+}
