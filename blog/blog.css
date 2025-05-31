@@ -14,6 +14,24 @@ header {
     padding: 1rem 0;
 }
 
+/* Skip to Content Accessibility */
+.skiptocontent a {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    background-color: #2c5aa0;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+.skiptocontent a:focus {
+    top: 0; /* unhide when focused on */
+}
+
 h1 {
     font-family: "Lora", serif;
     font-size: 2.5rem;
@@ -25,7 +43,7 @@ h1 {
 nav {
     border-top: 2px solid #e9ecef;
     border-bottom: 2px solid #e9ecef;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
 }
 
 /* Center it for mobile */
@@ -34,7 +52,7 @@ nav ul {
     grid-template-columns: repeat(3, 1fr); 
     justify-items: center;
     list-style: none;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     margin: 0;
     max-width: 1200px;
     margin-left: auto;
@@ -45,7 +63,7 @@ nav ul a:link {
     text-decoration: none;
     color: #c2185b;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0.25rem 0.5rem;
 }
 
@@ -138,6 +156,7 @@ main {
     height: auto;
     margin-bottom: 1rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: block; /* Ensures proper centering */
 }
 
 .caption {
@@ -190,6 +209,16 @@ footer {
 
 /* Media Query for Desktop */
 @media (min-width: 769px) {
+    /* Right-aligned navigation */
+    nav ul {
+        justify-items: end;
+        padding: 0.25rem 2rem 0.25rem 0;
+        margin: 0;
+        margin-right: 2rem;
+        margin-left: auto;
+        max-width: 1200px;
+    }
+
     /* Two-column layout for larger screens */
     main {
         grid-template-columns: 3fr 1fr;
@@ -241,16 +270,7 @@ footer {
     }
 
     .book-content img {
-        margin-left: 4rem; /* to match offset in mockup */
-    }
-
-    /* Right-aligned navigation */
-    nav ul {
-        justify-items: end;
-        padding: 0.5rem 2rem 0.5rem 0;
-        margin: 0;
-        margin-right: 2rem;
-        margin-left: auto;
-        max-width: 1200px;
+        align-self: center; /* Center the image while keeping the other content left-aligned */
+        margin-left: 0;
     }
 }

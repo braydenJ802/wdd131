@@ -56,7 +56,7 @@ function dynamicBookUpdate(item) {
         </div>
         <div class="book-content">
             <h2 class="book-title">${item.title}</h2>
-            <img src=${item.imgSrc} alt=${item.imgAlt}>
+            <img src="${item.imgSrc}" alt="${item.imgAlt}">
             <p class="caption">${item.description} <a href="#">Read More...</a></p>
         </div>
     </article>
