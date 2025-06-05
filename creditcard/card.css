@@ -1,0 +1,21 @@
+/*Credit Cards Font import goes here*/
+
+
+
+/* Skip to Content Accessibility */
+.skiptocontent a {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    background-color: #2c5aa0;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+.skiptocontent a:focus {
+    top: 0; /* unhide when focused on */
+}
