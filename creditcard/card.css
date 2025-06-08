@@ -34,8 +34,8 @@ main {
 
 /* Front Card Grid */
 .card-front {
-    grid-column: 2 !important;
-    grid-row: 2 !important;
+    grid-column: 2;
+    grid-row: 2;
 
     background-color: #D2DCDD;  /* Light gray */
     box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
@@ -100,8 +100,8 @@ main {
 
 /* Back Card Grid */
 .card-back {
-    grid-column: 2 !important;
-    grid-row: 2 !important;
+    grid-column: 2;
+    grid-row: 2;
     transform: translate(30px, 10px);
 
     background-color: #c5cdcf;  /* Slightly darker gray */
