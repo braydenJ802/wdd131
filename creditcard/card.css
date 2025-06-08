@@ -33,7 +33,7 @@ main {
 }
 
 /* Front Card Grid */
-article.card.card-front {
+.card-front {
     grid-column: 2 !important;
     grid-row: 2 !important;
 
@@ -99,7 +99,7 @@ article.card.card-front {
 }
 
 /* Back Card Grid */
-article.card.card-back {
+.card-back {
     grid-column: 2 !important;
     grid-row: 2 !important;
     transform: translate(30px, 10px);
