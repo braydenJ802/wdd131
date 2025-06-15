@@ -59,7 +59,6 @@ button:hover {
   background-color: #58605a;
 }
 
-
 /* Flash effects for Buttons */
 .attack-flash {
     background-color: rgb(175, 25, 25);
@@ -69,7 +68,6 @@ button:hover {
     background-color: rgb(175, 25, 25); /* match flash color */
     cursor: default; /*prevent hover-style pointer during flash */
 }
-
 
 .levelUp-flash {
     background-color: rgb(72, 206, 106);
@@ -103,7 +101,7 @@ button:hover {
   cursor: default;
 }
 
-
+/* Log */
 .log {
   min-height: 1.3em;
   font-weight: bold;
