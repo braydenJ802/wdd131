@@ -1,0 +1,44 @@
+<!-- https://braydenj802.github.io/wdd131/character-card/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Social Media properties -->
+  <meta property="og:title" content="Character Card">
+  <meta property="og:type" content="RPG Character Card"/>
+  <meta property="og:description" content="An interactive RPG character card">
+  <meta property="og:image" content="https://andejuli.github.io/wdd131/character_card/snortleblat.webp">
+  <meta property="og:url" content="https://braydenj802.github.io/wdd131/character-card/index.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <title>Character Card</title>
+
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <div class="card">
+    <img class="image" src="#" alt="#">
+    <div class="name"></div>
+    <div class="stats"> 
+      <p><strong>Class:</strong> <span id="class"></span></p>
+      <p><strong>Level:</strong> <span id="level"></span></p>
+      <p><strong>Health:</strong> <span id="health"></span></p>
+    </div>
+
+    <div class="buttons">
+      <div class="button-group">
+        <button id="attacked">Attacked</button>
+        <p class="log log-attack"></p>
+      </div>
+      <div class="button-group">
+        <button id="levelUp">Level Up</button>
+        <p class="log log-levelUp"></p>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
