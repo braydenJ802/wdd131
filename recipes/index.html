@@ -1,0 +1,102 @@
+<!-- https://braydenj802.github.io/wdd131/recipes/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Social Media properties -->
+  <meta property="og:title" content="Recipe Book">
+  <meta property="og:type" content="Recipe Book"/>
+  <meta property="og:description" content="An interactive, online Recipe Book">
+  <meta property="og:image" content="https://braydenj802.github.io/wdd131/recipes/images/recipe-book.png">
+  <meta property="og:url" content="https://braydenj802.github.io/wdd131/recipes/index.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <title>Recipe Book</title>
+
+  <link href="recipes.css" rel="stylesheet">
+  <script defer src="recipe.js"></script>
+</head>
+<body>
+<header>
+    <img src="images/recipe-book.png" alt="Home | Recipe Book Logo" class="logo"> 
+    <h1 class="title">Recipe Book</h1>
+</header>
+<main>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <form class="search-form" action="" mehtod="POST">
+            <input
+            type="text"
+            id="recipeSearch"
+            name="recipeSearch"
+            placeholder="Find a recipe"
+            class="search-input"
+            >
+            <button class="search-button" type="submit">🔍</button>
+        </form>
+    </div>
+    
+    <hr> 
+
+    <!-- Recipe Display -->
+    <article class="recipe-container">
+      <img 
+        src="images/apple-crisp.jpg" 
+        alt="Apple Crisp with vanilla ice cream" 
+        class="recipe-image"
+      >
+      
+      <div class="recipe-content">
+        <div class="recipe-tags">
+          <span class="tag">dessert</span>
+        </div>
+        
+        <h2 class="recipe-title">Apple Crisp</h2>
+        
+        <div 
+          class="rating"
+          role="img"
+          aria-label="Rating: 4 out of 5 stars"
+        >
+          <span aria-hidden="true" class="icon-star-filled">★</span>
+          <span aria-hidden="true" class="icon-star-filled">★</span>
+          <span aria-hidden="true" class="icon-star-filled">★</span>
+          <span aria-hidden="true" class="icon-star-filled">★</span>
+          <span aria-hidden="true" class="icon-star-empty">☆</span>
+        </div>
+
+        <p class="recipe-description">
+          This apple crisp recipe is a simple yet delicious fall dessert that's great served warm with vanilla ice cream.
+        </p>
+
+        <div class="recipe-metadata">
+          <span><strong>Prep:</strong> 30 min</span>
+          <span><strong>Cook:</strong> 45 min</span>
+          <span><strong>Serves:</strong> 12</span>
+        </div>
+      </div>
+    </article>
+</main>
+<footer>
+    <div class="footer-content">
+        <a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons" class="flaticon-attribution">
+            Recipe icons created by Freepik - Flaticon
+        </a>
+
+        <div class="social">
+            <!-- Social media icons provided under CC from https://www.iconfinder.com/AlfredoCreates  -->
+            <a href="#" aria-label="Instagram">
+                <img src="images/instagram_icon.svg" alt="instagram icon">
+            </a>
+            <a href="#" aria-label="YouTube">
+                <img src="images/youtube_icon.svg" alt="youtube icon">
+            </a>
+            <a href="#" aria-label="Pinterest">
+                <img src="images/pinterest_icon.svg" alt="pinterest icon">
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
