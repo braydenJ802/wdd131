@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+    
+:root {
+    --primary-color: #1B98E0;
+    --secondary-color: #6fc6f8;
+    --text-dark: #333;
+    --text-light: #ebebeb;
+    --primary-font: Arial, Helvetica, sans-serif;
+    --secondary-font: "Comfortaa", cursive;
+    --tag-color: #c1e8ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Header */
+header {
+    background-color: var(--text-light);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.title {
+    font-family: var(--secondary-font);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Main */
+main {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Search Form */
+.search-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-form {
+    display: flex;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden; /* This makes the inner elements respect the rounded corners */
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-button {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.search-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Recipe Container */
+.recipe-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    flex-direction: column; /* For mobile layout */
+}
+
+.recipe-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.recipe-content {
+    padding: 1.5rem;
+}
+
+.recipe-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    background-color: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background-color: var(--tag-color);
+    border: 1px solid #ccc;
+}
+
+.recipe-title {
+    font-family: var(--secondary-font);
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.rating {
+    display: flex;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.icon-star-filled {
+    color: #ffd700;
+}
+
+.icon-star-empty {
+    color: #ddd;
+}
+
+.recipe-description {
+    display: none; /* Hidden on mobile */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+}
+
+.recipe-metadata {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-light);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.flaticon-attribution {
+    font-size: 0.6em;
+    color: #888;
+}
+
+.social {
+    display: flex;
+    gap: 1rem;
+}
+
+.social img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s;
+}
+
+.social img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design - Tablets & Desktops */
+@media (min-width: 600px) {
+    main {
+        max-width: 900px;
+    }
+    
+    .search-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .search-form {
+        flex: 1;
+    }
+
+    .recipe-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .recipe-image {
+        width: 300px;
+        height: auto;
+        min-height: 250px;
+    }
+
+    .recipe-description {
+        display: block; /* Show description on larger screens */
+    }
+
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .social img {
+        width: 40px;
+        height: 40px; 
+    }
+}
+
+@media (min-width: 960px) {
+    main {
+      max-width: 960px;
+    }
+
+    .recipe-title {
+      font-size: 2.2rem;
+    }
+
+    .social img {
+        width: 30px;
+        height: 30px; 
+    }
+}
