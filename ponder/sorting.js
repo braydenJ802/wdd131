@@ -265,7 +265,6 @@ let hikeContainer = document.querySelector("#hike-container");
 renderHikes(getRandomItem(hikes));
 
 let hikeSearchButton = document.querySelector("button");
-
 hikeSearchButton.addEventListener("click", search);
 
 
