@@ -35,8 +35,8 @@
                 The main page will feature all of the fighters, neatly organized as a grid of 
                 clickable images. Upon selection, the individual fighter page corresponding to that
                 fighter will be opened. This will showcase specific deatils about that particular 
-                fighter. (This includes their name, weight class, game origin, move sets, and one 
-                example combo). This information will be dynamically pulled from a JSON object.
+                fighter. (This includes their name, weight class, game origin, move sets, perceived "tier", 
+				and one example combo). This information will be dynamically pulled from a JSON object.
             </p>
 
             <p>This uses the following: </p>
@@ -50,22 +50,22 @@
 			<hr />
 			<h2>Branding</h2>
 			<h3>Website Logo</h3>
-			<img src="#game-controller-icon.png" alt="A minimalist game controller icon" />
+			<img src="images/game-controller-icon.png" alt="A minimalist game controller icon" />
 			<hr />
 			<h2>Style Guide</h2>
 
 			<!-- ------------------------Steps 4-8------------------------------ -->
 
 			<h3>Color Palette</h3>
-			<!--  The colors you choose for a website are one of the most important decisions you will make. Follow the instructions on the activity in iLearn then return and replace the color codes below with the hex color codes (the 6 digit numbers that show at the bottom of each color) for the colors you have chosen below.  You should have at least 2 colors but do not have to fill in all 4 if you do not need them.  -->
-
-			<!-- Copy and paste the URL to your finished palette below Make sure to paste it into both spots -->
-			Palette URL:
-			<a
-				href="https://coolors.co/396e94-e7c24f-a43312-381d2a-aabd8c"
-				target="_blank"
-				>https://coolors.co/396e94-e7c24f-a43312-381d2a-aabd8c</a
-			>
+			<div class="palette-url">
+				Palette URL:
+				<a
+					href="https://coolors.co/ffffff-ce1627-855663-0f0f23-0066cc-007aff"
+					target="_blank"
+					>https://coolors.co/ffffff-ce1627-855663-0f0f23-0066cc-007aff</a
+				>
+			</div>
+			
 
 			<table class="colors">
 				<tbody>
@@ -74,13 +74,18 @@
 						<th>Secondary</th>
 						<th>Accent 1</th>
 						<th>Accent 2</th>
+						<th>Links 1</th>
+						<th>Links 2</th>
 					</tr>
-					<!-- Replace the numbers in the boxes below with your hex color codes. Then switch to the site-plan.css file and change your colors there as well. -->
+					
 					<tr>
-						<td class="primary">[#396E94]</td>
-						<td class="secondary">[#E7C24F]</td>
-						<td class="accent1">[#A43312]</td>
-						<td class="accent2"></td>
+						<td class="primary">#CE1627</td>
+						<td class="secondary">#FFFFFF</td>
+						<td class="accent1">#0F0F23</td>
+						<td class="accent2">#855663
+						<td class="links1">#0066CC</td>
+						<td class="links2">#007AFF</td>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -91,13 +96,22 @@
 			<!-- Choose a font for your paragraphs (body copy) and headlines. What font(s) have you chosen? Why did you choose what you did?  Make sure to review the list of web safe fonts at W3Schools.org as a starting point.  Think also about which of your colors above you might use for background and font colors. -->
 
 			<h4>
-				Heading Font: [Font Name here]
-				<!-- change this -->
+				Heading Font: 'Nunito', 'Helvetica Neue', Arial, sans-serif
 			</h4>
 			<h4>
-				Paragraph Font: [Font Name here]
-				<!-- change this -->
+				Paragraph Font: 'Source Sans 3', 'Segoe UI', Tahoma, sans-serif
 			</h4>
+			<h3>Typography Rationale</h3>
+			<p>
+				I selected Nunito and Source Sans 3 as my primary typeface pairing to create an approachable yet polished user experience. 
+				Nunito's warm, rounded letterforms bring a friendly, gaming-community feel to headings and navigation elements, while 
+				Source Sans 3's clean precision ensures excellent readability for detailed fighter information and longer text passages. 
+				Both fonts are specifically designed for digital interfaces and offer outstanding accessibility features, including clear 
+				character distinction and high screen reader compatibility. This combination strikes the perfect balance between the casual, 
+				welcoming nature of gaming culture and the professional presentation expected in modern web design. The pairing also provides 
+				robust performance through Google Fonts' reliable CDN, ensuring consistent typography across all devices and browsers 
+				while maintaining fast load times for an optimal user experience.
+			</p>
 			<h3>Normal paragraph example</h3>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -122,35 +136,37 @@
 			<!-- Think about how you want your navigation bar to look. In the site-plan.css file change the colors to your colors to get the look you desire. -->
 			<nav>
 				<a href="#">Home</a>
-				<a href="#">Page2</a>
-				<a href="#">Page3</a>
+				<a href="#">Fighters</a>
+				<!--<a href="#">Overview</a>--> <!-- I may include this additional page -->
 			</nav>
 			<hr />
 
 			<h2>Content</h2>
 			<h3>Home page</h3>
-			<p>[content, images, data for the home page]</p>
-			<h3>[Page 2]</h3>
-			<p>[content, images, data for the subpage]</p>
+			<p>A grid of character portraits from Super Smash Bros Ultimate.</p>
+			<h3>Fighter Page</h3>
+			<p>Each individual page will have details about a specific character.</p>
 			<h2>Wireframes</h2>
-			<p>
-				Create two wireframes for your site. One for each page and list them
-				here
-			</p>
-
+			
 			<h3>Home</h3>
-			<p>
-				[Any additional details about home that the wireframe does not make
-				clear]
-			</p>
-			<img src="#" alt="home page wireframe" />
 
-			<h3>[Page 2]</h3>
+			<img src="images/SSB Wireframe-Main Page.drawio.png" alt="Home page">
 			<p>
-				[Any additional details about page 2 that the wireframe does not make
-				clear]
+				Additional Details: There may or may not be an "Overview" page, 
+				covering basic gameplay and the history of the series.
 			</p>
-			<img src="#" alt="page 2 wireframe" />
+
+			<h3>Fighter Page</h3>
+			<p>
+				This is an individual fighter page. This template will be used for
+				every character in the game.
+			</p>
+			<img src="images/SSB Wireframe-Fighter Page.drawio.png" alt="Fighter Template Wireframe" />
+			<p>
+				Additional Details: The "Fighter Portrait" is an image but all of the other media
+				will be GIFs or videos.
+			</p>
+			
 		</main>
 	</body>
 </html>
