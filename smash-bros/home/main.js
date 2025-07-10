@@ -1309,3 +1309,37 @@ const smashFighters =
     "Super Heavyweight": ["Incineroar", "Ganondorf", "Donkey Kong", "King Dedede", "King K. Rool", "Bowser"]
   }
 }
+
+
+
+
+
+
+function fighterTemplate(fighter) {
+  return `
+  <div class="fighter-card">
+    <img
+    src=${fighter.image}
+    alt=${fighter.name}
+    class="fighter-portrait"
+    >
+
+    <div class="fighter-details>
+      <div class="fighter-name">
+        ${fighter.name}
+      </div>
+      <div class="fighter-rank">
+        ${fighter.tier}
+      </div>
+    </div>
+  </div>
+  `
+}
+
+function renderFighterPortraits(fighter) {
+  let html = fighterTemplate(fighter);
+  fighterContainer.innerHTML += html;
+}
+
+let fighterContainer = document.querySelector(".fighter-container");
+renderFighterPortraits()
