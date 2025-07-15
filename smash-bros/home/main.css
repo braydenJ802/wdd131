@@ -8,9 +8,16 @@
 
 
 
+.fighters-container {
+    display: flex;
+    flex-direction: column; /* Mobile first */
+    align-items: center;
+}
 
-
-
+.fighter-card {
+    padding: 20px;
+    margin: 5px;
+}
 
 
 

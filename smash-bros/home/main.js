@@ -92,7 +92,8 @@ const smashFighters =
         "down_special": "Bomb",
         "final_smash": "Phazon Laser"
       },
-      "example_combo": "Neutral Air → Forward Air"
+      "example_combo": "Neutral Air → Forward Air",
+      "echo_of": "Samus"
     },
     {
       "id": 5,
@@ -262,7 +263,8 @@ const smashFighters =
         "down_special": "Vegetable",
         "final_smash": "Daisy Blossom"
       },
-      "example_combo": "Down Throw → Forward Air → Forward Air"
+      "example_combo": "Down Throw → Forward Air → Forward Air",
+      "echo_of": "Peach" // Daisy is an "echo" or clone of Peach
     },
     {
       "id": 14,
@@ -415,7 +417,8 @@ const smashFighters =
         "down_special": "Counter",
         "final_smash": "Critical Hit"
       },
-      "example_combo": "Up Throw → Up Air"
+      "example_combo": "Up Throw → Up Air",
+      "echo_of": "Marth"
     },
     {
       "id": 22,
@@ -500,7 +503,8 @@ const smashFighters =
         "down_special": "Counter",
         "final_smash": "Awakening Aether"
       },
-      "example_combo": "Neutral Air → Jab → Forward Tilt"
+      "example_combo": "Neutral Air → Jab → Forward Tilt",
+      "echo_of": "Roy"
     },
     {
       "id": 26,
@@ -568,7 +572,8 @@ const smashFighters =
         "down_special": "Guardian Orbitars",
         "final_smash": "Dark Pit Staff"
       },
-      "example_combo": "Down Throw → Forward Air"
+      "example_combo": "Down Throw → Forward Air",
+      "echo_of": "Pit"
     },
     {
       "id": 29,
@@ -1110,7 +1115,8 @@ const smashFighters =
         "down_special": "Focus Attack",
         "final_smash": "Shinryuken/Shippu Jinraikyaku"
       },
-      "example_combo": "Light Jab → Light Down Tilt → Shoryuken"
+      "example_combo": "Light Jab → Light Down Tilt → Shoryuken",
+      "echo_of": "Ryu"
     },
     {
       "id": 61,
@@ -1212,7 +1218,8 @@ const smashFighters =
         "down_special": "Holy Water",
         "final_smash": "Grand Cross"
       },
-      "example_combo": "Down Throw → Forward Air"
+      "example_combo": "Down Throw → Forward Air",
+      "echo_of": "Simon"
     },
     {
       "id": 67,
@@ -1311,7 +1318,47 @@ const smashFighters =
 }
 
 
+function search(event) {
 
+  // Prevent form from submitting and reloading the page
+  event.preventDefault();
+
+  let fighterQuery = document.querySelector("#fighterSearch").value;
+
+  let filteredFighters = smashFighters.characters.filter(function(fighter) {
+    if (fighter.echo_of)
+    {
+      return fighter.name.toLowerCase().includes(fighterQuery.toLowerCase())
+      || fighter.echo_of.toLowerCase().includes(fighterQuery.toLowerCase())
+    }
+
+    return fighter.name.toLowerCase().includes(fighterQuery.toLowerCase())
+  })
+
+  console.log(filteredFighters);
+
+  function compareFighterID(a, b) {
+    if (a.id < b.id) {
+      return -1;
+    }
+    else if (a.id > b.id) {
+      return 1;
+    }
+    // otherwise a must be equal to b (which shouldn't happen - error)
+    return 0;
+  }
+
+  // Sort the fighters by ID (just in case they are out of order)
+  let sortedFighters = filteredFighters.sort(compareFighterID);
+
+  // Clear out any previous content
+  fighterContainer.textContent = "";
+
+  // Output onto the screen
+  sortedFighters.forEach(function(fighter) {
+    renderFighterPortraits(fighter);
+  })
+}
 
 
 
@@ -1319,8 +1366,9 @@ function fighterTemplate(fighter) {
   return `
   <div class="fighter-card">
     <img
-    src=${fighter.image}
-    alt=${fighter.name}
+    <!--src=${fighter.image}-->
+    <!--alt=${fighter.name}-->
+    <!-- Link to fighter page -->
     class="fighter-portrait"
     >
 
@@ -1336,10 +1384,19 @@ function fighterTemplate(fighter) {
   `
 }
 
-function renderFighterPortraits(fighter) {
+
+function renderFighterPortrait(fighter) {
   let html = fighterTemplate(fighter);
   fighterContainer.innerHTML += html;
 }
 
-let fighterContainer = document.querySelector(".fighter-container");
-renderFighterPortraits()
+function renderFighterPortraits(fighter) {
+  renderFighterPortrait(fighter);
+}
+
+
+let fighterContainer = document.querySelector(".fighters-container");
+smashFighters.characters.forEach(renderFighterPortraits);
+
+let fighterSearchForm = document.querySelector(".search-form");
+fighterSearchForm.addEventListener("submit", search);
