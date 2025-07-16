@@ -75,7 +75,8 @@ const smashFighters =
         "down_special": "Bomb",
         "final_smash": "Zero Laser"
       },
-      "example_combo": "Neutral Air → Forward Air"
+      "example_combo": "Neutral Air → Forward Air",
+      "echo": "Dark Samus"
     },
     {
       "id": 4.5,
@@ -246,7 +247,8 @@ const smashFighters =
         "down_special": "Vegetable",
         "final_smash": "Peach Blossom"
       },
-      "example_combo": "Down Throw → Forward Air → Forward Air"
+      "example_combo": "Down Throw → Forward Air → Forward Air",
+      "echo": "Daisy"
     },
     {
       "id": 13.5,
@@ -400,7 +402,8 @@ const smashFighters =
         "down_special": "Counter",
         "final_smash": "Critical Hit"
       },
-      "example_combo": "Up Throw → Up Air (Tipper)"
+      "example_combo": "Up Throw → Up Air (Tipper)",
+      "echo": "Lucina"
     },
     {
       "id": 21.5,
@@ -486,7 +489,8 @@ const smashFighters =
         "down_special": "Counter",
         "final_smash": "Critical Hit"
       },
-      "example_combo": "Neutral Air → Jab → Forward Tilt"
+      "example_combo": "Neutral Air → Jab → Forward Tilt",
+      "echo": "Chrom"
     },
     {
       "id": 25.5,
@@ -555,7 +559,8 @@ const smashFighters =
         "down_special": "Guardian Orbitars",
         "final_smash": "Lightning Chariot"
       },
-      "example_combo": "Down Throw → Forward Air"
+      "example_combo": "Down Throw → Forward Air",
+      "echo": "Pit"
     },
     {
       "id": 28.5,
@@ -1081,7 +1086,8 @@ const smashFighters =
         "down_special": "Focus Attack",
         "final_smash": "Shinku Hadoken"
       },
-      "example_combo": "Light Down Tilt → Light Down Tilt → Shoryuken"
+      "example_combo": "Light Down Tilt → Light Down Tilt → Shoryuken",
+      "echo": "Ken"
     },
     {
       "id": 59,
@@ -1201,7 +1207,8 @@ const smashFighters =
         "down_special": "Holy Water",
         "final_smash": "Grand Cross"
       },
-      "example_combo": "Down Throw → Forward Air"
+      "example_combo": "Down Throw → Forward Air",
+      "echo": "Richter"
     },
     {
       "id": 66,
@@ -1318,70 +1325,113 @@ const smashFighters =
 }
 
 
-function search(event) {
-
+function searchFighters(event) {
   // Prevent form from submitting and reloading the page
   event.preventDefault();
 
+  updateFighterDisplay();
+}
+
+function applyFilters() {
+  updateFighterDisplay();
+}
+
+function updateFighterDisplay() {
+  // Search Bar
   let fighterQuery = document.querySelector("#fighterSearch").value;
 
-  let filteredFighters = smashFighters.characters.filter(function(fighter) {
-    if (fighter.echo_of)
-    {
-      return fighter.name.toLowerCase().includes(fighterQuery.toLowerCase())
-      || fighter.echo_of.toLowerCase().includes(fighterQuery.toLowerCase())
-    }
+  // Filters
+  let selectedTier = document.querySelector("#tierFilter").value;
+  let selectedWeightClass = document.querySelector("#weightFilter").value;
+  let selectedSeries = document.querySelector("#seriesFilter").value;
 
-    return fighter.name.toLowerCase().includes(fighterQuery.toLowerCase())
-  })
+  let filteredFighters = smashFighters.characters.filter(function(fighter) {
+    // Name/echo search logic
+    let matchesName;
+    if (fighter.echo_of) {
+      matchesName = fighter.name.toLowerCase().includes(fighterQuery.toLowerCase()) ||
+        fighter.echo_of.toLowerCase().includes(fighterQuery.toLowerCase());
+    } else if (fighter.echo) {
+      matchesName = fighter.name.toLowerCase().includes(fighterQuery.toLowerCase()) ||
+        fighter.echo.toLowerCase().includes(fighterQuery.toLowerCase());
+    } else {
+      matchesName = fighter.name.toLowerCase().includes(fighterQuery.toLowerCase());
+    }
+    
+    // Filter conditions
+    let matchesTier = selectedTier === "All Tiers" || fighter.tier === selectedTier;
+    let matchesWeightClass = selectedWeightClass === "All Weights" || fighter.weight_class === selectedWeightClass;
+    let matchesSeries = selectedSeries === "All Series" || fighter.series === selectedSeries;
+    
+    // Must match ALL conditions
+    return matchesName && matchesTier && matchesWeightClass && matchesSeries;
+  });
 
   console.log(filteredFighters);
 
-  function compareFighterID(a, b) {
-    if (a.id < b.id) {
-      return -1;
+  function prioritizeSearchedFighter(a, b, searchQuery) {
+  // If searching specifically for an echo fighter, prioritize it
+    if (searchQuery && a.name.toLowerCase() === searchQuery.toLowerCase()) {
+      return -1; // Put 'a' first (searched fighter goes first)
     }
-    else if (a.id > b.id) {
-      return 1;
+    else if (searchQuery && b.name.toLowerCase() === searchQuery.toLowerCase()) {
+      return 1; // Put 'b' first (searched fighter goes first)
     }
-    // otherwise a must be equal to b (which shouldn't happen - error)
     return 0;
   }
 
-  // Sort the fighters by ID (just in case they are out of order)
-  let sortedFighters = filteredFighters.sort(compareFighterID);
+  function compareFighterID(a, b) {
+    return a.id - b.id;
+  }
+
+  function sortFighters(a, b, searchQuery) {
+    let priorityEchoSearch = prioritizeSearchedFighter(a, b, searchQuery);
+    if (priorityEchoSearch !== 0) {
+      return priorityEchoSearch;
+    }
+
+    // If no priority (no echoes), sort by ID
+    return compareFighterID(a, b);
+  }
+
+  let sortedFighters = filteredFighters.sort((a, b) => sortFighters(a, b, fighterQuery));
 
   // Clear out any previous content
   fighterContainer.textContent = "";
 
   // Output onto the screen
   sortedFighters.forEach(function(fighter) {
-    renderFighterPortraits(fighter);
-  })
+    renderFighterPortrait(fighter);
+  });
 }
 
-
-
 function fighterTemplate(fighter) {
-  return `
+  
+  let html = `
   <div class="fighter-card">
-    <img
+    <!--<img class="fighter-portrait"-->
     <!--src=${fighter.image}-->
     <!--alt=${fighter.name}-->
-    <!-- Link to fighter page -->
-    class="fighter-portrait"
-    >
+    <!-- Link to fighter page >-->
+    <div class="fighter-details">
+      <div class="fighter-name">${fighter.name}</div>
+      <div class="fighter-rank">${fighter.tier}</div>`;
+  
+  // If the fighter has a clone
+  if (fighter.echo) {
+    html += `
+    <div class="has-echo-fighter"><p>Echo:${fighter.echo}</p></div>`;
+  } else if (fighter.echo_of) { // or is a clone
+    html += `
+    <div class="echo-fighter-of"><p>Echo of:${fighter.echo_of}</p></div>`;
+  }
 
-    <div class="fighter-details>
-      <div class="fighter-name">
-        ${fighter.name}
-      </div>
-      <div class="fighter-rank">
-        ${fighter.tier}
-      </div>
-    </div>
-  </div>
+  html +=
   `
+  </div>
+  </div>`;
+
+  return html;
 }
 
 
@@ -1390,13 +1440,23 @@ function renderFighterPortrait(fighter) {
   fighterContainer.innerHTML += html;
 }
 
-function renderFighterPortraits(fighter) {
-  renderFighterPortrait(fighter);
-}
-
 
 let fighterContainer = document.querySelector(".fighters-container");
-smashFighters.characters.forEach(renderFighterPortraits);
+smashFighters.characters.forEach(function(fighter) {
+  renderFighterPortrait(fighter);
+});
+
+let tierFilter = document.querySelector("#tierFilter");
+let weightFilter = document.querySelector("#weightFilter");
+let seriesFilter = document.querySelector("#seriesFilter");
+
+tierFilter.addEventListener("change", updateFighterDisplay);
+weightFilter.addEventListener("change", updateFighterDisplay);
+seriesFilter.addEventListener("change", updateFighterDisplay);
 
 let fighterSearchForm = document.querySelector(".search-form");
-fighterSearchForm.addEventListener("submit", search);
+fighterSearchForm.addEventListener("submit", searchFighters);
+
+// Also listen for search input (in addition to form submit)
+let searchInput = document.querySelector("#fighterSearch");
+searchInput.addEventListener("input", updateFighterDisplay); // Updates as you type
