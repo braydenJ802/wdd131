@@ -1397,7 +1397,7 @@ function updateFighterDisplay() {
   let sortedFighters = filteredFighters.sort((a, b) => sortFighters(a, b, fighterQuery));
 
   // Clear out any previous content
-  fighterContainer.textContent = "";
+  fightersContainer.textContent = "";
 
   // Output onto the screen
   sortedFighters.forEach(function(fighter) {
@@ -1409,13 +1409,14 @@ function fighterTemplate(fighter) {
   
   let html = `
   <div class="fighter-card">
-    <!--<img class="fighter-portrait"-->
-    <!--src=${fighter.image}-->
-    <!--alt=${fighter.name}-->
-    <!-- Link to fighter page >-->
-    <div class="fighter-details">
-      <div class="fighter-name">${fighter.name}</div>
-      <div class="fighter-rank">${fighter.tier}</div>`;
+    <a href="fighter.html?id=${fighter.id}" class="fighter-link">
+      <!--<img class="fighter-portrait"-->
+      <!--src=${fighter.image}-->
+      <!--alt=${fighter.name}-->
+      <!-- Link to fighter page -->
+      <div class="fighter-details">
+        <div class="fighter-name">${fighter.name}</div>
+        <div class="fighter-rank">${fighter.tier}</div>`;
   
   // If the fighter has a clone
   if (fighter.echo) {
@@ -1428,7 +1429,8 @@ function fighterTemplate(fighter) {
 
   html +=
   `
-  </div>
+      </div>
+    </a>
   </div>`;
 
   return html;
@@ -1437,11 +1439,11 @@ function fighterTemplate(fighter) {
 
 function renderFighterPortrait(fighter) {
   let html = fighterTemplate(fighter);
-  fighterContainer.innerHTML += html;
+  fightersContainer.innerHTML += html;
 }
 
 
-let fighterContainer = document.querySelector(".fighters-container");
+let fightersContainer = document.querySelector(".fighters-container");
 smashFighters.characters.forEach(function(fighter) {
   renderFighterPortrait(fighter);
 });
