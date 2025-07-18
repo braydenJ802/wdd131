@@ -1467,14 +1467,6 @@ function fighterTemplate(fighter) {
       <div class="fighter-details">
         <div class="fighter-name">${fighter.name}</div>
         <div class="fighter-rank">${fighter.tier}</div>`;
-    <a href="fighter.html?id=${fighter.id}" class="fighter-link">
-      <!--<img class="fighter-portrait"-->
-      <!--src=${fighter.image}-->
-      <!--alt=${fighter.name}-->
-      <!-- Link to fighter page -->
-      <div class="fighter-details">
-        <div class="fighter-name">${fighter.name}</div>
-        <div class="fighter-rank">${fighter.tier}</div>`;
   
   // If the fighter has a clone
   if (fighter.echo) {
