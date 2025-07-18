@@ -1329,7 +1329,73 @@ function searchFighters(event) {
   // Prevent form from submitting and reloading the page
   event.preventDefault();
 
+  let fighterQuery = document.querySelector("#fighterSearch").value.trim();
+
+  if (fighterQuery !== "") {
+    // Check if we have any non-default filters active
+    let hasActiveFilters = !areFiltersAtDefault();
+    
+    if (hasActiveFilters) {
+      // Check if searching would have results with current filters
+      let currentResults = getFilteredFighters(fighterQuery);
+      
+      if (currentResults.length === 0) {
+        //console.log("No results found, resetting filters");
+        // RESET filters - no results found with current filters
+        resetFiltersToDefault();
+      }
+    }
+  }
+
   updateFighterDisplay();
+}
+
+function areFiltersAtDefault() {
+  let selectedTier = document.querySelector("#tierFilter").value;
+  let selectedWeightClass = document.querySelector("#weightFilter").value;
+  let selectedSeries = document.querySelector("#seriesFilter").value;
+  
+  //console.log("Current filters:", selectedTier, selectedWeightClass, selectedSeries);
+  
+  return selectedTier === "All Tiers" && 
+         selectedWeightClass === "All Weights" && 
+         selectedSeries === "All Series";
+}
+
+function resetFiltersToDefault() {
+  document.querySelector("#tierFilter").value = "All Tiers";
+  document.querySelector("#weightFilter").value = "All Weights";
+  document.querySelector("#seriesFilter").value = "All Series";
+}
+
+function getNameMatch(fighter, query) {
+  // Name/echo search logic
+  if (fighter.echo_of) {
+    return fighter.name.toLowerCase().includes(query.toLowerCase()) ||
+      fighter.echo_of.toLowerCase().includes(query.toLowerCase());
+  } else if (fighter.echo) {
+    return fighter.name.toLowerCase().includes(query.toLowerCase()) ||
+    fighter.echo.toLowerCase().includes(query.toLowerCase());
+  } else {
+    return fighter.name.toLowerCase().includes(query.toLowerCase());
+  }
+}
+
+function getFilteredFighters(searchQuery = "") {
+  // Get current filter settings
+  let selectedTier = document.querySelector("#tierFilter").value;
+  let selectedWeightClass = document.querySelector("#weightFilter").value;
+  let selectedSeries = document.querySelector("#seriesFilter").value;
+
+  return smashFighters.characters.filter(function(fighter) {
+    let matchesName = getNameMatch(fighter, searchQuery);
+    let matchesTier = selectedTier === "All Tiers" || fighter.tier === selectedTier;
+    let matchesWeightClass = selectedWeightClass === "All Weights" || fighter.weight_class === selectedWeightClass;
+    let matchesSeries = selectedSeries === "All Series" || fighter.series === selectedSeries;
+    
+    // Must match ALL conditions
+    return matchesName && matchesTier && matchesWeightClass && matchesSeries;
+  });
 }
 
 function applyFilters() {
@@ -1341,33 +1407,7 @@ function updateFighterDisplay() {
   let fighterQuery = document.querySelector("#fighterSearch").value;
 
   // Filters
-  let selectedTier = document.querySelector("#tierFilter").value;
-  let selectedWeightClass = document.querySelector("#weightFilter").value;
-  let selectedSeries = document.querySelector("#seriesFilter").value;
-
-  let filteredFighters = smashFighters.characters.filter(function(fighter) {
-    // Name/echo search logic
-    let matchesName;
-    if (fighter.echo_of) {
-      matchesName = fighter.name.toLowerCase().includes(fighterQuery.toLowerCase()) ||
-        fighter.echo_of.toLowerCase().includes(fighterQuery.toLowerCase());
-    } else if (fighter.echo) {
-      matchesName = fighter.name.toLowerCase().includes(fighterQuery.toLowerCase()) ||
-        fighter.echo.toLowerCase().includes(fighterQuery.toLowerCase());
-    } else {
-      matchesName = fighter.name.toLowerCase().includes(fighterQuery.toLowerCase());
-    }
-    
-    // Filter conditions
-    let matchesTier = selectedTier === "All Tiers" || fighter.tier === selectedTier;
-    let matchesWeightClass = selectedWeightClass === "All Weights" || fighter.weight_class === selectedWeightClass;
-    let matchesSeries = selectedSeries === "All Series" || fighter.series === selectedSeries;
-    
-    // Must match ALL conditions
-    return matchesName && matchesTier && matchesWeightClass && matchesSeries;
-  });
-
-  console.log(filteredFighters);
+  let filteredFighters = getFilteredFighters(fighterQuery);
 
   function prioritizeSearchedFighter(a, b, searchQuery) {
   // If searching specifically for an echo fighter, prioritize it
@@ -1394,14 +1434,24 @@ function updateFighterDisplay() {
     return compareFighterID(a, b);
   }
 
+  // Sort the filtered results
   let sortedFighters = filteredFighters.sort((a, b) => sortFighters(a, b, fighterQuery));
+  console.log(sortedFighters);
 
+  // - Display -
   // Clear out any previous content
-  fighterContainer.textContent = "";
+  fightersContainer.textContent = "";
+
+  // Check if no results found
+  if (sortedFighters.length === 0) {
+    fighterContainer.innerHTML = `
+    <p class="no-results">No fighters found matching your search.</p>`; // No results
+    return;
+  }
 
   // Output onto the screen
   sortedFighters.forEach(function(fighter) {
-    renderFighterPortrait(fighter);
+    renderFighterPortrait(fighter); // Display fighters
   });
 }
 
@@ -1409,13 +1459,14 @@ function fighterTemplate(fighter) {
   
   let html = `
   <div class="fighter-card">
-    <!--<img class="fighter-portrait"-->
-    <!--src=${fighter.image}-->
-    <!--alt=${fighter.name}-->
-    <!-- Link to fighter page >-->
-    <div class="fighter-details">
-      <div class="fighter-name">${fighter.name}</div>
-      <div class="fighter-rank">${fighter.tier}</div>`;
+    <a href="fighter.html?id=${fighter.id}" class="fighter-link">
+      <!--<img class="fighter-portrait"-->
+      <!--src=${fighter.image}-->
+      <!--alt=${fighter.name}-->
+      <!-- Link to fighter page -->
+      <div class="fighter-details">
+        <div class="fighter-name">${fighter.name}</div>
+        <div class="fighter-rank">${fighter.tier}</div>`;
   
   // If the fighter has a clone
   if (fighter.echo) {
@@ -1428,24 +1479,25 @@ function fighterTemplate(fighter) {
 
   html +=
   `
-  </div>
+      </div>
+    </a>
   </div>`;
 
   return html;
 }
 
-
 function renderFighterPortrait(fighter) {
   let html = fighterTemplate(fighter);
-  fighterContainer.innerHTML += html;
+  fightersContainer.innerHTML += html;
 }
 
-
+// Initialize the display
 let fighterContainer = document.querySelector(".fighters-container");
 smashFighters.characters.forEach(function(fighter) {
   renderFighterPortrait(fighter);
 });
 
+// Event Listeners
 let tierFilter = document.querySelector("#tierFilter");
 let weightFilter = document.querySelector("#weightFilter");
 let seriesFilter = document.querySelector("#seriesFilter");
