@@ -1,5 +1,9 @@
 import { smashFighters } from "../smashData.js";
 
+let currentCostumeIndex = 0;
+let currentFighter = null;
+
+
 // Get fighter from URL parameters
 function getCurrentFighter() {
     // Get the URL parameters (everything after "?")
@@ -42,7 +46,7 @@ function getNavigationFighters(currentFighter) {
 
 // Template for the fighter navigation bar
 function fighterNavTemplate(previousFighter, nextFighter) {
-    console.log(previousFighter.id);
+    //console.log(previousFighter.id);
     // ←  →
     return `
     <li><a href="fighter.html?id=${previousFighter.id}">${previousFighter.name}</a></li>
@@ -166,15 +170,6 @@ function showError(message) {
   `;
 }
 
-function changeCostume() {
-    // Increment through the images to change the alt/costume
-
-
-
-}
-
-
-
 // Render functions
 function renderFighterContent(fighter) {
     let html = fighterPageTemplate(fighter);
@@ -196,17 +191,45 @@ function initializeFighterPage() {
     return;
   }
 
+  // Store globally for costume changing
+  currentFighter = fighter;
+
   // Update page title
   document.getElementById("page-title").textContent = `${fighter.name} - Fighter Details - Super Smash Bros Ultimate`;
 
   // Get fighters for navigation
   const { previousFighter, nextFighter } = getNavigationFighters(fighter);
-  console.log(previousFighter);
-  console.log(nextFighter);
+  //console.log(previousFighter);
+  //console.log(nextFighter);
 
   // Render content
   renderFighterContent(fighter);
   renderFighterNavBar(previousFighter, nextFighter);
+}
+
+function setupCostumeChanger() {
+    const fighterPortrait = document.querySelector(".fighter-portrait");
+
+    if (fighterPortrait) {
+        fighterPortrait.addEventListener("click", changeCostume);
+        // Add a cursor pointer to show it's clickable
+        fighterPortrait.style.cursor = "pointer";
+        fighterPortrait.title = "Click to change costume";
+    }
+}
+
+function changeCostume() {
+    // Increment the costume index (0-7, then wrap to 0)
+    currentCostumeIndex = (currentCostumeIndex + 1) % 8;
+
+    // Format the number with leading zero (00, 01, 02, etc.)
+    const costumeNumber = currentCostumeIndex.toString().padStart(2, '0');
+
+    // Update the image source
+    const fighterPortrait = document.querySelector(".fighter-portrait");
+    fighterPortrait.src = `../images/fighter-portraits/${currentFighter.id}-${currentFighter.name}/chara_1_${currentFighter.image_name}_${costumeNumber}.webp`;
+
+    console.log(`Changed to costume ${costumeNumber}`);
 }
 
 // Get elements
@@ -217,7 +240,4 @@ const fighterNavBar = document.querySelector(".fighter-page-nav-bar");
 initializeFighterPage();
 
 // Costumes/Alternates
-const fighterPortrait = document.querySelector(".fighter-portrait");
-fighterPortrait.addEventListener("click", function() {
-    fighterPortrait.src = changeCostume();
-});
+setupCostumeChanger();
