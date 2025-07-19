@@ -1,21 +1,64 @@
 import { smashFighters } from "../smashData.js";
 
+// Get fighter from URL parameters
+function getCurrentFighter() {
+    // Get the URL parameters (everything after "?")
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Extract specific parameters
+    const fighterID = urlParams.get("id");
+
+    if (fighterID) {
+        // Find fighter where id matches
+        return smashFighters.characters.find(fighter => fighter.id == fighterID);
+    }
+
+    return null; // No fighter found
+}
+
+// Get next/previous fighters for navigation
+function getNavigationFighters(currentFighter) {
+    const fighters = smashFighters.characters; // All fighters array
+
+    // Find where the current fighter is in the array
+    const currentIndex = fighters.findIndex(fighter => fighter.id === currentFighter.id);
+
+    // Get previous fighter (or wrap to end if at beginning)
+    const previousFighter = currentIndex > 0 ?
+        fighters[currentIndex - 1] :    // Normal case
+        fighters[fighters.length - 1]   // Wrap around
+
+    console.log("Previous: " + previousFighter.name);
+
+    // Get next fighter (or wrap to beginning if at end)
+    const nextFighter = currentIndex < fighters.length - 1 ?
+        fighters[currentIndex + 1] :   // Normal case
+        fighters[0];                   // Wrap around
+
+    console.log("Next: " + nextFighter.name);
+
+    return { previousFighter, nextFighter };
+}
 
 // Template for the fighter navigation bar
 function fighterNavTemplate(previousFighter, nextFighter) {
+    console.log(previousFighter.id);
+    // ←  →
     return `
-    <li><a href="fighter.html?id=${previousFighter.id}">← ${previousFighter.name}</a></li>
-    <li><a href="fighter.html?id=${nextFighter.id}">${nextFighter.name} →</a></li>
+    <li><a href="fighter.html?id=${previousFighter.id}">${previousFighter.name}</a></li>
+    <li><a href="fighter.html?id=${nextFighter.id}">${nextFighter.name}</a></li>
     `;
 }
 
 // Template for the main fighter content
 function fighterPageTemplate(fighter) {
+    console.log(`../images/fighter-portraits/${fighter.id}-${fighter.name}/chara_1_${fighter.image_name}_00.webp"`);
+
     let html = `
     <article class="fighter-header">
         <div class="fighter-portrait-container">
             <img class="fighter-portrait" 
-            src="../images/fighter-portraits/${fighter.id}-${fighter.name}/chara_1_${fighter.name.toLowerCase()}_00.webp"
+            src="../images/fighter-portraits/${fighter.id}-${fighter.name}/chara_1_${fighter.image_name}_00.webp"
             alt="${fighter.name} portrait">
         </div>
 
@@ -113,18 +156,53 @@ function fighterPageTemplate(fighter) {
     return html;
 }
 
+function showError(message) {
+  fighterContainer.innerHTML = `
+    <div class="error-message">
+      <h2>Fighter Not Found</h2>
+      <p>${message}</p>
+      <a href="../home/index.html" class="back-button">← Back to All Fighters</a>
+    </div>
+  `;
+}
 
-
+// Render functions
 function renderFighterContent(fighter) {
-    let html = fighterPageTemplate();
+    let html = fighterPageTemplate(fighter);
     fighterContainer.innerHTML += html;
 }
 
-function renderFighterNavBar() {
-    let html = fighterNavTemplate();
+function renderFighterNavBar(previousFighter, nextFighter) {
+    let html = fighterNavTemplate(previousFighter, nextFighter);
     fighterNavBar.innerHTML += html;
 }
 
-let fighterContainer = document.querySelector(".fighter-container");
+// Main initialization function
+function initializeFighterPage() {
+  const fighter = getCurrentFighter();
+  console.log(fighter);
 
-let fighterNavBar = document.querySelector(".fighter-page-nav-bar");
+  if (!fighter) {
+    showError("No fighter specified or fighter not found");
+    return;
+  }
+
+  // Update page title
+  document.getElementById("page-title").textContent = `${fighter.name} - Fighter Details - Super Smash Bros Ultimate`;
+
+  // Get fighters for navigation
+  const { previousFighter, nextFighter } = getNavigationFighters(fighter);
+  console.log(previousFighter);
+  console.log(nextFighter);
+
+  // Render content
+  renderFighterContent(fighter);
+  renderFighterNavBar(previousFighter, nextFighter);
+}
+
+// Get elements
+const fighterContainer = document.querySelector(".fighter-container");
+const fighterNavBar = document.querySelector(".fighter-page-nav-bar");
+
+// Initialize when page loads
+initializeFighterPage();

@@ -139,7 +139,7 @@ function fighterTemplate(fighter) {
     <a href="../fighter/fighter.html?id=${fighter.id}" class="fighter-link">
       <div class="fighter-portrait-container">  
         <img class="fighter-portrait"
-        src="../images/fighter-portraits/${fighter.id}-${fighter.name}/chara_0_${fighter.image_name.toLowerCase()}_00.webp"
+        src="../images/fighter-portraits/${fighter.id}-${fighter.name}/chara_0_${fighter.image_name}_00.webp"
         alt=${fighter.name}
         >
       
@@ -171,7 +171,6 @@ function fighterTemplate(fighter) {
 function renderFighterPortrait(fighter) {
   let html = fighterTemplate(fighter);
   fightersContainer.innerHTML += html;
-  fightersContainer.innerHTML += html;
 }
 
 // Initialize the display
@@ -185,9 +184,9 @@ let tierFilter = document.querySelector("#tierFilter");
 let weightFilter = document.querySelector("#weightFilter");
 let seriesFilter = document.querySelector("#seriesFilter");
 
-tierFilter.addEventListener("change", updateFighterDisplay);
-weightFilter.addEventListener("change", updateFighterDisplay);
-seriesFilter.addEventListener("change", updateFighterDisplay);
+tierFilter.addEventListener("change", applyFilters);
+weightFilter.addEventListener("change", applyFilters);
+seriesFilter.addEventListener("change", applyFilters);
 
 let fighterSearchForm = document.querySelector(".search-form");
 fighterSearchForm.addEventListener("submit", searchFighters);
