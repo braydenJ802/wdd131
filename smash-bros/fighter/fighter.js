@@ -111,7 +111,7 @@ function fighterPageTemplate(fighter) {
 
     html += `
             <div class="fighter-description">
-                <!--Description-->
+                <span>${fighter.description}</span>
             </div>
 
         </div>
@@ -166,6 +166,15 @@ function showError(message) {
   `;
 }
 
+function changeCostume() {
+    // Increment through the images to change the alt/costume
+
+
+
+}
+
+
+
 // Render functions
 function renderFighterContent(fighter) {
     let html = fighterPageTemplate(fighter);
@@ -206,3 +215,9 @@ const fighterNavBar = document.querySelector(".fighter-page-nav-bar");
 
 // Initialize when page loads
 initializeFighterPage();
+
+// Costumes/Alternates
+const fighterPortrait = document.querySelector(".fighter-portrait");
+fighterPortrait.addEventListener("click", function() {
+    fighterPortrait.src = changeCostume();
+});
