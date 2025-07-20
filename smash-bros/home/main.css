@@ -1,5 +1,4 @@
-
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 /* CSS Reset and Base Styles */
 * {
@@ -33,6 +32,10 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--background-dark);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Nunito', 'Helvetica Neue', Arial, sans-serif
 }
 
 header {
@@ -114,7 +117,11 @@ main {
 
 .grid-filters-and-search {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Moible first */
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    margin-bottom: 2.5rem;
     
 }
 
@@ -123,11 +130,9 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Make the filters take up as much space as possible */
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     padding: 1.5rem;
-    background: var(--background-white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-light);
+    
 }
 
 .grid-filters select {
@@ -165,25 +170,210 @@ main {
 .search-form {
     display: flex;
     gap: 0rem;
-    
+    max-width: 500px;
     width: 100%;
     box-shadow: var(--shadow-light);
     border-radius: var(--border-radius);
+    overflow: hidden;
+    background: white;
 }
 
+.search-input {
+   flex: 1;
+   padding: 0.75rem 1.25rem;
+   border: none;
+   font-size: 1rem;
+   outline: none;
+}
 
+.search-input::placeholder {
+    color: var(--text-light);
+}
 
+.search-button {
+    padding: 0.75rem 1rem;
+    background: rgb(138, 178, 253);
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem; /* This affects the magnifying glass because it is a character */
+    transition: all 0.2s ease;
+}
+
+.search-button:hover {
+    background: rgb(224, 230, 243);
+    transform: scale(1.05);
+}
+
+/* Divider */
+hr {
+    border-color: var(--shadow-light);
+}
+
+/* Fighter Container */
 .fighters-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column; /* Mobile first */
-    align-items: center;
+    /*align-items: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
 }
 
+/* Fighter Cards */
 .fighter-card {
-    padding: 20px;
-    margin: 5px;
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    height: 300px; 
+    padding: 0.75rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
+.fighter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Fighter Cards - Tighter spacing to match site plan */
+.fighter-card {
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    height: 300px; /* Reduced from 320px */
+    padding: 0.75rem; /* Reduced from 1rem */
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.fighter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.fighter-link {
+    text-decoration: none;
+    color: inherit;
+    flex: 1; /* Takes up available space */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Portrait takes up most of the card */
+.fighter-portrait-container {
+    flex: 1; /* Takes up remaining space after details */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.fighter-portrait {
+    max-width: 100%; /* Don't exceed container width */
+    max-height: 100%; /* Don't exceed container height */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: var(--border-radius);
+    object-fit: contain;
+}
+
+/* Small text area at bottom */
+.fighter-details {
+    display: flex;
+    flex-direction: row; /* Side by side layout */
+    align-items: center;
+    justify-content: space-between; /* Name on left, tier on right */
+    gap: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+.fighter-name p {
+    margin: 0;
+    font-size: 1.1rem; /* Slightly smaller to fit side by side */
+    font-weight: 700;
+    color: var(--text-dark);
+    text-align: left; /* Left align name */
+}
+
+.fighter-rank p {
+    margin: 0;
+    font-size: 0.8rem;
+    text-align: right; /* Right align tier */
+}
+
+.tier-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+} 
+
+/* S-tier badges - Red variants */
+.tier-splus { background-color: #ff4444; }
+.tier-s { background-color: var(--primary-color); }
+.tier-sminus { background-color: #ff6666; }
+
+/* A-tier badges - Orange/Gold variants */
+.tier-aplus { background-color: #ff8800; }
+.tier-a { background-color: #ffaa00; }
+.tier-aminus { background-color: var(--accent2-color); }
+
+/* B-tier badges - Blue variants */
+.tier-bplus { background-color: var(--links1-color); }
+.tier-b { background-color: var(--links2-color); }
+.tier-bminus { background-color: #4da6ff; }
+
+/* C-tier badges - Green variants */
+.tier-cplus { background-color: #4caf50; }
+.tier-c { background-color: #66bb6a; }
+.tier-cminus { background-color: #81c784; }
+
+/* Lower tier badges - Gray variants */
+.tier-d { background-color: var(--text-light); }
+.tier-eplus { background-color: #888; }
+.tier-e { background-color: #666; }
+
+/* Echo Fighter Info - Position as overlay badge */
+.has-echo-fighter, .echo-fighter-of {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: var(--links1-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 10; /* Appears above other content */
+    text-align: center;
+    min-width: 60px;
+}
+
+.has-echo-fighter p, .echo-fighter-of p {
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Different color for "echo of" vs "has echo" */
+.echo-fighter-of {
+    background-color: var(--accent2-color); /* Rose gold for "echo of" */
+}
+
+/* No Results Message */
 .no-results {
     text-align: center;
     color: #666;
@@ -192,17 +382,13 @@ main {
     font-size: 1.1rem;
 }
 
-
-
-
-
-
 /* Footer */
 footer {
-    background-color: var(--text-light);
-    padding: 2rem 1rem;
+    background: var(--accent1-color);
+    color: white;
+    padding: 3rem 1rem;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .footer-content {
@@ -210,21 +396,49 @@ footer {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
 }
 
 .social {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .social img {
     width: 50px;
     height: 50px;
-    transition: transform 0.2s;
+    filter: brightness(0) invert(1);
+    transition: all 0.2s ease;
 }
 
 .social img:hover {
     transform: scale(1.1);
+}
+
+
+/* Desktop: Filters and search side by side */
+@media (min-width: 980px) {
+    .grid-filters-and-search {
+        flex-direction: row; /* Side by side */
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .grid-filters {
+        flex: 1; /* Takes up remaining space */
+        margin-bottom: 0; /* Remove bottom margin */
+        padding: 1.5rem;
+        grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns for the 3 filters */
+    }
+    
+    .search-container {
+        flex-shrink: 0; /* Doesn't shrink */
+        margin-bottom: 0;
+        padding: 1.5rem;
+    }
+    
+    .search-form {
+        width: 300px; /* Fixed width for search bar */
+    }
 }

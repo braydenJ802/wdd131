@@ -133,8 +133,25 @@ function updateFighterDisplay() {
 
 function fighterTemplate(fighter) {
   
-  let html = `
-  <div class="fighter-card">
+  let html = `<div class="fighter-card">`;
+
+  // If the fighter has a clone
+  if (fighter.echo) {
+    html += `
+    <div class="has-echo-fighter">
+      <p><strong>Echo</strong></p>
+      <p>${fighter.echo}</p>
+    </div>`;
+  } else if (fighter.echo_of) { // or is a clone
+    html += `
+    <div class="echo-fighter-of">
+      <p><strong>Echo Of</strong></p>
+      <p>${fighter.echo_of}</p>
+    </div>`;
+  }
+
+  html +=
+  `
     <!-- Link to fighter page -->
     <a href="../fighter/fighter.html?id=${fighter.id}" class="fighter-link">
       <div class="fighter-portrait-container">  
@@ -144,19 +161,10 @@ function fighterTemplate(fighter) {
         >
       
         <div class="fighter-details">
-          <div class="fighter-name">${fighter.name}</div>
-          <div class="fighter-rank">${fighter.tier}</div>
+          <div class="fighter-name"><p>${fighter.name}</p></div>
+          <div class="fighter-rank tier-badge tier-${fighter.tier.toLowerCase().replace("+", "plus").replace("-", "minus")}"><p>${fighter.tier}</p></div>
       </div>`;
   
-  // If the fighter has a clone
-  if (fighter.echo) {
-    html += `
-    <div class="has-echo-fighter"><p><strong>Echo: ${fighter.echo}</strong></p></div>`;
-  } else if (fighter.echo_of) { // or is a clone
-    html += `
-    <div class="echo-fighter-of"><p><strong>Echo of: ${fighter.echo_of}</strong></p></div>`;
-  }
-
   html +=
   `
       </div>

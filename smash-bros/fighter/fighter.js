@@ -47,10 +47,9 @@ function getNavigationFighters(currentFighter) {
 // Template for the fighter navigation bar
 function fighterNavTemplate(previousFighter, nextFighter) {
     //console.log(previousFighter.id);
-    // ←  →
     return `
-    <li><a href="fighter.html?id=${previousFighter.id}">${previousFighter.name}</a></li>
-    <li><a href="fighter.html?id=${nextFighter.id}">${nextFighter.name}</a></li>
+    <li><a href="fighter.html?id=${previousFighter.id}">← ${previousFighter.name}</a></li>
+    <li><a href="fighter.html?id=${nextFighter.id}">${nextFighter.name} →</a></li>
     `;
 }
 
