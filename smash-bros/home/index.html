@@ -23,7 +23,7 @@
 <body>
     <header>
         <nav>
-            <img src="../images/game-controller-icon.png" alt="Home | Game Controller Logo" class="logo"> 
+            <a href="index.html"><img src="../images/game-controller-icon.png" alt="Home | Game Controller Logo" class="logo"></a>
         
             <ol class="nav-bar">
                 <li><a href="index.html">Home</a></li>
@@ -44,88 +44,90 @@
     </header>
 
     <main>
-        <div class="grid-filters">
-            <!-- "All Tiers" Filter -->
-            <select id="tierFilter">
-                <option value="All Tiers">All Tiers</option>
-                <option value="S+">S+</option>
-                <option value="S">S</option>
-                <option value="S-">S-</option>
-                <option value="A+">A+</option>
-                <option value="A">A</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B">B</option>
-                <option value="B-">B-</option>
-                <option value="C+">C+</option>
-                <option value="C">C</option>
-                <option value="C-">C-</option>
-                <option value="D">D+</option>
-                <option value="E+">E+</option>
-                <option value="E">E</option>
-            </select>
+        <div class="grid-filters-and-search">
+            <div class="grid-filters">
+                <!-- "All Tiers" Filter -->
+                <select id="tierFilter">
+                    <option value="All Tiers">All Tiers</option>
+                    <option value="S+">S+</option>
+                    <option value="S">S</option>
+                    <option value="S-">S-</option>
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D">D+</option>
+                    <option value="E+">E+</option>
+                    <option value="E">E</option>
+                </select>
 
-            <!-- "All Weights" Filter -->
-             <select id="weightFilter">
-                <option value="All Weights">All Weights</option>
-                <option value="Balloonweight">Balloonweight</option>
-                <option value="Featherweight">Featherweight</option>
-                <option value="Lightweight">Lightweight</option>
-                <option value="Middleweight">Middleweight</option>
-                <option value="Heavyweight">Heavyweight</option>
-                <option value="Super Heavyweight">Super Heavyweight</option>
-            </select>
+                <!-- "All Weights" Filter -->
+                <select id="weightFilter">
+                    <option value="All Weights">All Weights</option>
+                    <option value="Balloonweight">Balloonweight</option>
+                    <option value="Featherweight">Featherweight</option>
+                    <option value="Lightweight">Lightweight</option>
+                    <option value="Middleweight">Middleweight</option>
+                    <option value="Heavyweight">Heavyweight</option>
+                    <option value="Super Heavyweight">Super Heavyweight</option>
+                </select>
 
-            <!-- "All Series" Filter -->
-            <select id="seriesFilter">
-                <option value="All Series">All Series</option>
-                <option value="Super Mario">Super Mario Bros.</option>
-                <option value="Donkey Kong">Donkey Kong</option>
-                <option value="The Legend of Zelda">The Legend of Zelda</option>
-                <option value="Metroid">Metroid</option>
-                <option value="Kirby">Kirby</option>
-                <option value="Star Fox">Star Fox</option>
-                <option value="Pokemon">Pokemon</option>
-                <option value="EarthBound">EarthBound</option>
-                <option value="F-Zero">F-Zero</option>
-                <option value="Ice Climber">Ice Climber</option>
-                <option value="Fire Emblem">Fire Emblem</option>
-                <option value="Game & Watch">Game & Watch</option>
-                <option value="Kid Icarus">Kid Icarus</option>
-                <option value="Metal Gear">Metal Gear</option>
-                <option value="Sonic">Sonic</option>
-                <option value="Pikmin">Pikmin</option>
-                <option value="R.O.B.">R.O.B.</option>
-                <option value="Animal Crossing">Animal Crossing</option>
-                <option value="Mega Man">Mega Man</option>
-                <option value="Wii Fit">Wii Fit</option>
-                <option value="Punch-Out">Punch-Out</option>
-                <option value="Mii">Mii</option>
-                <option value="Pac-Man">Pac-Man</option>
-                <option value="Xenoblade Chronicles">Xenoblade Chronicles</option>
-                <option value="Duck Hunt">Duck Hunt</option>
-                <option value="Street Fighter">Street Fighter</option>
-                <option value="Final Fantasy">Final Fantasy</option>
-                <option value="Bayonetta">Bayonetta</option>
-                <option value="Splatoon">Splatoon</option>
-                <option value="Castlevania">Castlevania</option>
-            </select>
+                <!-- "All Series" Filter -->
+                <select id="seriesFilter">
+                    <option value="All Series">All Series</option>
+                    <option value="Super Mario">Super Mario Bros.</option>
+                    <option value="Donkey Kong">Donkey Kong</option>
+                    <option value="The Legend of Zelda">The Legend of Zelda</option>
+                    <option value="Metroid">Metroid</option>
+                    <option value="Kirby">Kirby</option>
+                    <option value="Star Fox">Star Fox</option>
+                    <option value="Pokemon">Pokemon</option>
+                    <option value="EarthBound">EarthBound</option>
+                    <option value="F-Zero">F-Zero</option>
+                    <option value="Ice Climber">Ice Climber</option>
+                    <option value="Fire Emblem">Fire Emblem</option>
+                    <option value="Game & Watch">Game & Watch</option>
+                    <option value="Kid Icarus">Kid Icarus</option>
+                    <option value="Metal Gear">Metal Gear</option>
+                    <option value="Sonic">Sonic</option>
+                    <option value="Pikmin">Pikmin</option>
+                    <option value="R.O.B.">R.O.B.</option>
+                    <option value="Animal Crossing">Animal Crossing</option>
+                    <option value="Mega Man">Mega Man</option>
+                    <option value="Wii Fit">Wii Fit</option>
+                    <option value="Punch-Out">Punch-Out</option>
+                    <option value="Mii">Mii</option>
+                    <option value="Pac-Man">Pac-Man</option>
+                    <option value="Xenoblade Chronicles">Xenoblade Chronicles</option>
+                    <option value="Duck Hunt">Duck Hunt</option>
+                    <option value="Street Fighter">Street Fighter</option>
+                    <option value="Final Fantasy">Final Fantasy</option>
+                    <option value="Bayonetta">Bayonetta</option>
+                    <option value="Splatoon">Splatoon</option>
+                    <option value="Castlevania">Castlevania</option>
+                </select>
+            </div>
+        
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form class="search-form" action="" mehtod="POST">
+                    <input
+                    type="text"
+                    id="fighterSearch"
+                    name="fighterSearch"
+                    placeholder="Find a fighter"
+                    class="search-input"
+                    >
+                    <button class="search-button" type="submit">🔍</button>
+                </form>
+            </div>
         </div>
         
-
-        <!-- Search Bar -->
-        <div class="search-container">
-            <form class="search-form" action="" mehtod="POST">
-                <input
-                type="text"
-                id="fighterSearch"
-                name="fighterSearch"
-                placeholder="Find a fighter"
-                class="search-input"
-                >
-                <button class="search-button" type="submit">🔍</button>
-            </form>
-        </div>
         
         <hr> 
 

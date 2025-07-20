@@ -122,39 +122,83 @@ function fighterPageTemplate(fighter) {
     </article>
     
     <article class="fighter-breakdown">
-        <div class="special-moves">
-            <h2>Special Moves</h2>
-            <div class="moves-grid">
-                <div class="move">
-                    <label>Neutral Special:</label>
-                    <span>${fighter.moveset.neutral_special}</span>
+        <div class="moves-grid">
+            <!-- Neutral Special -->
+            <div class="move">
+                <div class="move-header">
+                    <h3 class="move-type">Neutral Special</h3>
+                    <img src="../images/fighter-portraits/${fighter.id}-${fighter.name}/Special Moves/neutral-special.webp" 
+                    alt="${fighter.moveset.neutral_special.name}" 
+                    class="move-image">
                 </div>
-                <div class="move">
-                    <label>Side Special:</label>
-                    <span>${fighter.moveset.side_special}</span>
+                <div class="move-info">
+                    <h4 class="move-name">${fighter.moveset.neutral_special.name}</h4>
+                    <p class="move-description">${fighter.moveset.neutral_special.description}</p>
                 </div>
-                <div class="move">
-                    <label>Up Special:</label>
-                    <span>${fighter.moveset.up_special}</span>
+            </div>
+          
+            <!-- Side Special -->
+            <div class="move">
+                <div class="move-header">
+                    <h3 class="move-type">Side Special</h3>
+                    <img src="../images/fighter-portraits/${fighter.id}-${fighter.name}/Special Moves/side-special.webp" 
+                    alt="${fighter.moveset.side_special.name}" 
+                    class="move-image">
                 </div>
-                <div class="move">
-                    <label>Down Special:</label>
-                    <span>${fighter.moveset.down_special}</span>
+                <div class="move-info">
+                    <h4 class="move-name">${fighter.moveset.side_special.name}</h4>
+                    <p class="move-description">${fighter.moveset.side_special.description}</p>
+                </div>
+            </div>
+          
+            <!-- Up Special -->
+            <div class="move">
+                <div class="move-header">
+                    <h3 class="move-type">Up Special</h3>
+                    <img src="../images/fighter-portraits/${fighter.id}-${fighter.name}/Special Moves/up-special.webp" 
+                    alt="${fighter.moveset.up_special.name}" 
+                    class="move-image">
+                </div>
+                <div class="move-info">
+                    <h4 class="move-name">${fighter.moveset.up_special.name}</h4>
+                    <p class="move-description">${fighter.moveset.up_special.description}</p>
+                </div>
+            </div>
+          
+            <!-- Down Special -->
+            <div class="move">
+                <div class="move-header">
+                    <h3 class="move-type">Down Special</h3>
+                    <img src="../images/fighter-portraits/${fighter.id}-${fighter.name}/Special Moves/down-special.webp" 
+                    alt="${fighter.moveset.down_special.name}" 
+                    class="move-image">
+                </div>
+                <div class="move-info">
+                    <h4 class="move-name">${fighter.moveset.down_special.name}</h4>
+                    <p class="move-description">${fighter.moveset.down_special.description}</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Final Smash -->
+        <div class="final-smash">
+            <h2>Final Smash</h2>
+            <div class="final-smash-content">
+                <img src="../images/fighter-portraits/${fighter.id}-${fighter.name}/Special Moves/final-smash.webp"
+                alt="${fighter.moveset.final_smash.name}"
+                class="final-smash-image">
+                <div class="final-smash-info">
+                    <h3>${fighter.moveset.final_smash.name}</h3>
+                    <p>${fighter.moveset.final_smash.description}</p>
                 </div>
             </div>
         </div>
 
+        <!-- Example Combo -->
         <div class="example-combo">
             <h2>Example Combo</h2>
-            <p class="combo-example">${fighter.example_combo}</p>
+            <p class="combo-example-text">${fighter.example_combo}</p>
         </div>
-
-        <div class="final-smash">
-            <div class="final-smash">
-            <h2>Final Smash</h2>
-            <p class="final-smash-name">${fighter.moveset.final_smash}</p>
-        </div>
-
     </article>`;
 
     return html;

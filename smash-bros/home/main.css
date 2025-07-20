@@ -1,9 +1,177 @@
 
+
+
+/* CSS Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
+:root {
+    --primary-color: #CE1627;    /* Red */
+    --secondary-color: #ffffff;  /* White */
+    --accent1-color: #0F0F23;    /* Dark navy */
+    --accent2-color: #855663;    /* Rose gold accent */
+    --links1-color: #0066CC;     /* Blue */
+    --links2-color: #007AFF;     /* Lighter blue */
+  
+    /* Text and background colors */
+    --text-dark: #333;
+    --text-light: #666;
+    --background-light: #f8f9fa;
+    --background-white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+    --border-radius: 8px;
+}
+
+body {
+    font-family:'Source Sans 3', 'Segoe UI', Tahoma, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-dark);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-medium);
+    margin-bottom: 2rem;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 30px;
+    width: auto;
+    filter: brightness(0) invert(1); /* Makes logo white */
+    transform: transform 0.2s ease; /* Set up for hover */
+}
+
+.logo:hover {
+    transform: scale(1.05); /* Makes it scale a bit, smoothly, when hovered over */
+}
+
+.nav-bar {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.nav-bar a:hover {
+    background-color: var(--accent2-color); /* Rose gold bg color on hover */
+    transform: translateY(-2px); /* ? */
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95; /* Makes the text slightly red */
+    max-width: 570px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Main */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.grid-filters-and-search {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* Filters */
+.grid-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Make the filters take up as much space as possible */
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.grid-filters select {
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.grid-filters select:hover {
+    border-color: var(--links1-color);
+}
+
+.grid-filters select:focus {
+    outline: none;
+    border-color: var(--accent2-color);
+}
+
+.non-default-filter {
+    outline: none;
+    border-color: var(--links2-color);
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 1rem; 
+    padding: 1.5rem;
+}
+
+.search-form {
+    display: flex;
+    gap: 0rem;
+    
+    width: 100%;
+    box-shadow: var(--shadow-light);
+    border-radius: var(--border-radius);
+}
+
+
 
 .fighters-container {
     display: flex;
@@ -23,6 +191,11 @@
     padding: 2rem;
     font-size: 1.1rem;
 }
+
+
+
+
+
 
 /* Footer */
 footer {

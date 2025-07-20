@@ -151,10 +151,10 @@ function fighterTemplate(fighter) {
   // If the fighter has a clone
   if (fighter.echo) {
     html += `
-    <div class="has-echo-fighter"><p>Echo:${fighter.echo}</p></div>`;
+    <div class="has-echo-fighter"><p><strong>Echo: ${fighter.echo}</strong></p></div>`;
   } else if (fighter.echo_of) { // or is a clone
     html += `
-    <div class="echo-fighter-of"><p>Echo of:${fighter.echo_of}</p></div>`;
+    <div class="echo-fighter-of"><p><strong>Echo of: ${fighter.echo_of}</strong></p></div>`;
   }
 
   html +=

@@ -19,11 +19,26 @@ export const smashFighters = {
       "weight_class": "Middleweight",
       "tier": "A+",
       "moveset": {
-        "neutral_special": "Fireball",
-        "side_special": "Cape",
-        "up_special": "Super Jump Punch",
-        "down_special": "F.L.U.D.D.",
-        "final_smash": "Mario Finale"
+        "neutral_special": {
+          "name": "Fireball",
+          "description": "Shoots a fireball that bounces along the ground. The fireball gets weaker as it travels."
+        },
+        "side_special": {
+          "name": "Cape",
+          "description": "Swings his cape to turn foes around. Can also reflect projectiles back at opponents."
+        },
+        "up_special": {
+          "name": "Super Jump Punch",
+          "description": "Punches upward while jumping. Opponents hit at the start of the move take more damage."
+        },
+        "down_special": {
+          "name": "F.L.U.D.D.",
+          "description": "Charges up F.L.U.D.D., then shoots a stream of water. The water pushes opponents but doesn't deal damage."
+        },
+        "final_smash": {
+          "name": "Mario Finale",
+          "description": "Fires two giant fireballs that travel across the stage, dealing massive damage to anyone caught in them."
+        }
       },
       "example_combo": "Down Throw → Up Air → Up Air → Up Special"
     },
@@ -38,11 +53,26 @@ export const smashFighters = {
       "weight_class": "Super Heavyweight",
       "tier": "B-",
       "moveset": {
-        "neutral_special": "Giant Punch",
-        "side_special": "Headbutt",
-        "up_special": "Spinning Kong",
-        "down_special": "Hand Slap",
-        "final_smash": "Jungle Rush"
+        "neutral_special": {
+          "name": "Giant Punch",
+          "description": "Winds up, then unleashes a devastating punch. Can be charged by pressing the button repeatedly for more power."
+        },
+        "side_special": {
+          "name": "Headbutt",
+          "description": "Lunges forward with a powerful headbutt. Buries grounded opponents and spikes airborne ones."
+        },
+        "up_special": {
+          "name": "Spinning Kong",
+          "description": "Spins around with arms extended, hitting multiple times. Can move left and right while spinning."
+        },
+        "down_special": {
+          "name": "Hand Slap",
+          "description": "Slaps the ground repeatedly, creating shockwaves that damage nearby grounded opponents."
+        },
+        "final_smash": {
+          "name": "Jungle Rush",
+          "description": "Punches opponents into a cinematic combo featuring a massive barrage of punches."
+        }
       },
       "example_combo": "Cargo Down Throw → Back Air"
     },
@@ -57,11 +87,26 @@ export const smashFighters = {
       "weight_class": "Heavyweight",
       "tier": "A+",
       "moveset": {
-        "neutral_special": "Charge Shot",
-        "side_special": "Missile",
-        "up_special": "Screw Attack",
-        "down_special": "Bomb",
-        "final_smash": "Zero Laser"
+        "neutral_special": {
+          "name": "Charge Shot",
+          "description": "Charges up energy, then fires a powerful energy blast. Can be charged for increased power and size."
+        },
+        "side_special": {
+          "name": "Missile",
+          "description": "Fires a missile. Tilt input fires a faster Homing Missile, smash input fires a slower Super Missile."
+        },
+        "up_special": {
+          "name": "Screw Attack",
+          "description": "Spins upward while surrounded by energy, hitting multiple times. Provides excellent recovery distance."
+        },
+        "down_special": {
+          "name": "Bomb",
+          "description": "Drops into Morph Ball form and places a bomb. The bomb explodes after a short time."
+        },
+        "final_smash": {
+          "name": "Zero Laser",
+          "description": "Fires a massive laser beam that pierces through opponents and deals tremendous damage."
+        }
       },
       "example_combo": "Neutral Air → Forward Air",
       "echo": "Dark Samus"
@@ -77,11 +122,26 @@ export const smashFighters = {
       "weight_class": "Heavyweight",
       "tier": "A+",
       "moveset": {
-        "neutral_special": "Charge Shot",
-        "side_special": "Missile",
-        "up_special": "Screw Attack",
-        "down_special": "Bomb",
-        "final_smash": "Phazon Laser"
+        "neutral_special": {
+          "name": "Charge Shot",
+          "description": "Charges up energy, then fires a powerful energy blast. Can be charged for increased power and size."
+        },
+        "side_special": {
+          "name": "Missile",
+          "description": "Fires a missile. Tilt input fires a faster Homing Missile, smash input fires a slower Super Missile."
+        },
+        "up_special": {
+          "name": "Screw Attack",
+          "description": "Spins upward while surrounded by energy, hitting multiple times. Provides excellent recovery distance."
+        },
+        "down_special": {
+          "name": "Bomb",
+          "description": "Drops into Morph Ball form and places a bomb. The bomb explodes after a short time."
+        },
+        "final_smash": {
+          "name": "Phazon Laser",
+          "description": "Fires a massive Phazon-powered laser beam that pierces through opponents and deals tremendous damage."
+        }
       },
       "example_combo": "Neutral Air → Forward Air",
       "echo_of": "Samus"
@@ -97,11 +157,26 @@ export const smashFighters = {
       "weight_class": "Featherweight",
       "tier": "D",
       "moveset": {
-        "neutral_special": "Inhale",
-        "side_special": "Hammer Flip",
-        "up_special": "Final Cutter",
-        "down_special": "Stone",
-        "final_smash": "Ultra Sword"
+        "neutral_special": {
+          "name": "Inhale",
+          "description": "Sucks up opponents and copies their neutral special move. Can also inhale items and projectiles."
+        },
+        "side_special": {
+          "name": "Hammer Flip",
+          "description": "Charges up a hammer attack. Can be charged for massive damage, but Kirby takes damage if overcharged."
+        },
+        "up_special": {
+          "name": "Final Cutter",
+          "description": "Pulls out a sword and slashes upward, then downward. Sends a projectile wave when landing."
+        },
+        "down_special": {
+          "name": "Stone",
+          "description": "Transforms into a heavy stone that drops quickly. Provides armor against most attacks while transformed."
+        },
+        "final_smash": {
+          "name": "Ultra Sword",
+          "description": "Kirby grabs a massive sword and performs several devastating slashes across the stage."
+        }
       },
       "example_combo": "Down Throw → Forward Air"
     },
@@ -116,11 +191,26 @@ export const smashFighters = {
       "weight_class": "Featherweight",
       "tier": "S-",
       "moveset": {
-        "neutral_special": "Thunder Jolt",
-        "side_special": "Skull Bash",
-        "up_special": "Quick Attack",
-        "down_special": "Thunder",
-        "final_smash": "Volt Tackle"
+        "neutral_special": {
+          "name": "Thunder Jolt",
+          "description": "Launches an electric projectile that travels along the ground and up walls."
+        },
+        "side_special": {
+          "name": "Skull Bash",
+          "description": "Charges forward with a powerful headbutt. Can be charged for increased distance and damage."
+        },
+        "up_special": {
+          "name": "Quick Attack",
+          "description": "Warps in up to two directions. Deals damage to opponents at the start and end of each warp."
+        },
+        "down_special": {
+          "name": "Thunder",
+          "description": "Calls down a lightning bolt from above. If it hits Pikachu, it deals massive damage to nearby opponents."
+        },
+        "final_smash": {
+          "name": "Volt Tackle",
+          "description": "Pikachu transforms into a ball of electricity and flies around the stage, dealing massive damage on contact."
+        }
       },
       "example_combo": "Drag-down Neutral Air → Up Tilt loops"
     },
@@ -135,11 +225,26 @@ export const smashFighters = {
       "weight_class": "Middleweight",
       "tier": "B-",
       "moveset": {
-        "neutral_special": "PK Flash",
-        "side_special": "PK Fire",
-        "up_special": "PK Thunder",
-        "down_special": "PSI Magnet",
-        "final_smash": "PK Starstorm"
+        "neutral_special": {
+          "name": "PK Flash",
+          "description": "Charges a PSI energy ball that can be controlled and detonated manually. Deals massive damage when fully charged."
+        },
+        "side_special": {
+          "name": "PK Fire",
+          "description": "Shoots a PSI projectile that bursts into flames on impact, trapping opponents in multiple hits."
+        },
+        "up_special": {
+          "name": "PK Thunder",
+          "description": "Creates a controllable ball of lightning. Can hit Ness to launch him for recovery or offense."
+        },
+        "down_special": {
+          "name": "PSI Magnet",
+          "description": "Absorbs energy-based projectiles to heal damage. Can also push opponents when activated."
+        },
+        "final_smash": {
+          "name": "PK Starstorm",
+          "description": "Calls down a barrage of falling stars that can be aimed left and right across the stage."
+        }
       },
       "example_combo": "Down Throw → Forward Air → Forward Air"
     },
@@ -154,11 +259,26 @@ export const smashFighters = {
       "weight_class": "Super Heavyweight",
       "tier": "C",
       "moveset": {
-        "neutral_special": "Fire Breath",
-        "side_special": "Flying Slam",
-        "up_special": "Whirling Fortress",
-        "down_special": "Bowser Bomb",
-        "final_smash": "Giga Bowser Punch"
+        "neutral_special": {
+          "name": "Fire Breath",
+          "description": "Breathes a stream of fire that gets weaker with continued use. Can be angled up and down."
+        },
+        "side_special": {
+          "name": "Flying Slam",
+          "description": "Grabs an opponent and jumps into the air, then slams them down. Direction can be influenced during the grab."
+        },
+        "up_special": {
+          "name": "Whirling Fortress",
+          "description": "Spins rapidly while moving upward, hitting multiple times. Can also be used on the ground."
+        },
+        "down_special": {
+          "name": "Bowser Bomb",
+          "description": "Jumps up and slams down with tremendous force, creating shockwaves on both sides upon landing."
+        },
+        "final_smash": {
+          "name": "Giga Bowser Punch",
+          "description": "Transforms into Giga Bowser and punches opponents off the screen with incredible force."
+        }
       },
       "example_combo": "Down Throw → Up Air"
     },
@@ -173,11 +293,26 @@ export const smashFighters = {
       "weight_class": "Featherweight",
       "tier": "S",
       "moveset": {
-        "neutral_special": "Chef",
-        "side_special": "Judge",
-        "up_special": "Fire",
-        "down_special": "Oil Spill",
-        "final_smash": "Octopus"
+        "neutral_special": {
+          "name": "Chef",
+          "description": "Flips sausages from a frying pan. The sausages travel in an arc and deal damage to opponents."
+        },
+        "side_special": {
+          "name": "Judge",
+          "description": "Swings a hammer with a random number (1-9). Higher numbers deal more damage and have special effects."
+        },
+        "up_special": {
+          "name": "Fire",
+          "description": "Extends a ladder and climbs up it. The ladder can hit opponents, and Game & Watch can attack while climbing."
+        },
+        "down_special": {
+          "name": "Oil Spill",
+          "description": "Dumps a bucket of oil that can absorb energy projectiles. When full, the bucket can be dumped for massive damage."
+        },
+        "final_smash": {
+          "name": "Octopus",
+          "description": "Transforms into a giant octopus that can grab and squeeze opponents while moving around the stage."
+        }
       },
       "example_combo": "Down Throw → Up Air → Up Air"
     },
@@ -192,11 +327,26 @@ export const smashFighters = {
       "weight_class": "Lightweight",
       "tier": "A-",
       "moveset": {
-        "neutral_special": "Hero's Bow",
-        "side_special": "Boomerang",
-        "up_special": "Spin Attack",
-        "down_special": "Bomb",
-        "final_smash": "Triforce Slash"
+        "neutral_special": {
+          "name": "Hero's Bow",
+          "description": "Fires arrows that can be charged for increased damage and speed. Arrows travel in an arc."
+        },
+        "side_special": {
+          "name": "Boomerang",
+          "description": "Throws a boomerang that travels forward then returns. Can hit opponents on both the outward and return trips."
+        },
+        "up_special": {
+          "name": "Spin Attack",
+          "description": "Spins with sword extended, hitting multiple times. Provides both vertical recovery and offensive options."
+        },
+        "down_special": {
+          "name": "Bomb",
+          "description": "Pulls out a bomb that explodes after a few seconds or when it hits something. Can be thrown or dropped."
+        },
+        "final_smash": {
+          "name": "Triforce Slash",
+          "description": "Traps nearby opponents in the Triforce symbol and performs a devastating sword combo."
+        }
       },
       "example_combo": "Down Throw → Up Air"
     },
@@ -211,11 +361,26 @@ export const smashFighters = {
       "weight_class": "Middleweight",
       "tier": "D",
       "moveset": {
-        "neutral_special": "Pocket",
-        "side_special": "Lloid Rocket",
-        "up_special": "Balloon Trip",
-        "down_special": "Timber",
-        "final_smash": "Dream Town"
+        "neutral_special": {
+          "name": "Pocket",
+          "description": "Catches projectiles and items, storing them to use later. Can also catch some opponent attacks."
+        },
+        "side_special": {
+          "name": "Lloid Rocket",
+          "description": "Fires a gyroid rocket that travels forward. Villager can ride the rocket for extra distance and damage."
+        },
+        "up_special": {
+          "name": "Balloon Trip",
+          "description": "Uses balloons to fly upward. The balloons can be popped by attacks, reducing recovery distance."
+        },
+        "down_special": {
+          "name": "Timber",
+          "description": "Plants, waters, and chops down a tree in three stages. The falling tree deals massive damage."
+        },
+        "final_smash": {
+          "name": "Dream Town",
+          "description": "Traps opponents in a house, then Tom Nook and the Nooklings remodel it with the opponents inside."
+        }
       },
       "example_combo": "Down Air → Up Smash"
     }
