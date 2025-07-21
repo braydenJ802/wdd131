@@ -35,7 +35,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Nunito', 'Helvetica Neue', Arial, sans-serif
+    font-family: 'Nunito', 'Helvetica Neue', Arial, sans-serif;
 }
 
 header {
@@ -58,7 +58,7 @@ nav {
     height: 30px;
     width: auto;
     filter: brightness(0) invert(1); /* Makes logo white */
-    transform: transform 0.2s ease; /* Set up for hover */
+    transform: transition 0.2s ease; /* Set up for hover */
 }
 
 .logo:hover {

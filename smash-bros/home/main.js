@@ -157,7 +157,7 @@ function fighterTemplate(fighter) {
       <div class="fighter-portrait-container">  
         <img class="fighter-portrait"
         src="../images/fighter-portraits/${fighter.id}-${fighter.name}/chara_0_${fighter.image_name}_00.webp"
-        alt=${fighter.name}
+        alt="${fighter.name}"
         >
       
         <div class="fighter-details">
@@ -167,9 +167,7 @@ function fighterTemplate(fighter) {
   
   html +=
   `
-      </div>
-    </a>
-      </div>
+    </div>
     </a>
   </div>`;
 
