@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Social Media properties -->
   <meta property="og:title" content="Super Smash Bros Ultimate - Fighter Breakdown">
-  <meta property="og:type" content="Super Smash Bros Ultimate - Fighter Breakdown"/>
+  <meta property="og:type" content="Super Smash Bros Ultimate - Fighter Breakdown">
   <meta property="og:description" content="An interactive web app showcasing characters from Super Smash Bros Ultimate">
   <meta property="og:image" content="https://braydenj802.github.io/wdd131/smash-bros/images/game-controller-icon.png">
   <meta property="og:url" content="https://braydenj802.github.io/wdd131/smash-bros/home/index.html">
@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" href="../images/icons/game-controller-icon.png">
 
   <link href="main.css" rel="stylesheet">
-  <script type="module" defer src="main.js"></script>
+  <script type="module" src="main.js"></script> <!-- No need for "defer" attribute with module (for JSON import) -->
 </head>
 <body>
     <header>
@@ -114,7 +114,7 @@
         
             <!-- Search Bar -->
             <div class="search-container">
-                <form class="search-form" action="" mehtod="POST">
+                <form class="search-form" action="" method="POST">
                     <input
                     type="text"
                     id="fighterSearch"
