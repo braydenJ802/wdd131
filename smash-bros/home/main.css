@@ -58,7 +58,7 @@ nav {
     height: 30px;
     width: auto;
     filter: brightness(0) invert(1); /* Makes logo white */
-    transform: transition 0.2s ease; /* Set up for hover */
+    transition: transform 0.2s ease; /* Set up for hover */
 }
 
 .logo:hover {
